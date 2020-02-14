@@ -51,3 +51,11 @@ publickey:  {{nss_pam_ldap_nss_publickey | default(["files", "ldap"]) | join(" "
 
 automount:  {{nss_pam_ldap_nss_automount | default(["files", "ldap"]) | join(" ")}}
 aliases:    {{nss_pam_ldap_nss_aliases | default(["files", "ldap"]) | join(" ")}}
+
+
+{% if nss_pam_ldap_custom_switches is defined %}
+{% for m in nss_pam_ldap_custom_switches %}
+{{m.name}}: {{m.sources | default(["files"]) | join(" ")}}
+{% endfor %}
+{% endif %}
+
