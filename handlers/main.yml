@@ -1,2 +1,9 @@
 ---
-# handlers file for nss-pam-ldap
+  - name: reload nscd
+    service:
+      name: nscd
+      state: reloaded
+  - name: restart nslcd
+    service:
+      name: nslcd
+      state: restarted
